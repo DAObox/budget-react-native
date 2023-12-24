@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { ScrollView, View } from 'react-native';
-import { ListItem } from 'tamagui';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import { ListItem, Stack } from 'tamagui';
 import { tokens, spenders, reoccurrences } from '../utils/constants';
 import { AssetSection } from '../components/AssetSection';
 import { BalanceCard } from '../components/BalanceCard';
@@ -24,7 +24,7 @@ const Home = () => {
 
   return (
     <ScrollView style={{ backgroundColor: '#F8F8F8' }}>
-      <View style={styles.container}>
+      <Stack style={styles.container}>
         <ListItem style={styles.balanceCardContainer}>
           <BalanceCard />
         </ListItem>
@@ -55,12 +55,12 @@ const Home = () => {
         <ListItem style={styles.assetSectionContainer}>
           <AssetSection />
         </ListItem>
-      </View>
+      </Stack>
     </ScrollView>
   );
 };
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
@@ -82,6 +82,6 @@ const styles = {
     width: '100%',
     paddingHorizontal: 0,
   },
-};
+});
 
 export default Home;

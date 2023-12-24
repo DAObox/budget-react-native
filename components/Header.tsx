@@ -1,4 +1,4 @@
-import { View, TouchableOpacity, Image, Text } from 'react-native';
+import { View, TouchableOpacity, Image, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 export function Header() {
@@ -20,7 +20,7 @@ export function Header() {
     );
 }
 
-const styles = {
+const styles = StyleSheet.create({
     flexContainer: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -60,4 +60,4 @@ const styles = {
         justifyContent: 'center',
         borderRadius: 24,
     },
-};
+});

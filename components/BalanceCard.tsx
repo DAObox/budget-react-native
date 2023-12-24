@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, StyleSheet } from 'react-native';
 import truncateEthereumAddress from '../utils/functions';
 
 export function BalanceCard() {
@@ -27,7 +27,7 @@ export function BalanceCard() {
     );
 }
 
-const styles = {
+const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
         flex: 1,
@@ -67,7 +67,7 @@ const styles = {
     },
     mediumText: {
         fontSize: 18,
-        fontWeight: 'medium',
+        fontWeight: '600',
         textAlign: 'center',
         color: 'white',
     },
@@ -87,4 +87,4 @@ const styles = {
         color: '#3164fa',
         textAlign: 'center',
     },
-};
+});

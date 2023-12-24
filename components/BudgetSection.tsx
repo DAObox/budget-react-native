@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { YGroup, Separator } from 'tamagui';
 import { budgets } from '../utils/constants';
 import { BudgetItem } from './BudgetItem';
@@ -72,7 +72,7 @@ export function BudgetSection({
     );
 }
 
-const styles = {
+const styles = StyleSheet.create({
     container: {
         flex: 1,
         width: '100%',
@@ -110,4 +110,4 @@ const styles = {
         paddingBottom: 5,
         backgroundColor: "#fff"
     },
-};
+});

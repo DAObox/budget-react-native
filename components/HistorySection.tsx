@@ -1,17 +1,31 @@
-import { View, Text } from "react-native";
-import { YGroup, Separator } from "tamagui";
-import { HistoryCard } from "./HistoryCard";
-import { history } from "../utils/constants";
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { YGroup, Separator } from 'tamagui';
+import { HistoryCard } from './HistoryCard';
+import { history } from '../utils/constants';
 
 export function HistorySection() {
     return (
-        <View className="flex-1 p-0">
-            <Text className="text-xl font-semibold text-[#363e4b]">History</Text>
+        <View style={styles.container}>
+            <Text style={styles.title}>History</Text>
             <YGroup separator={<Separator />}>
-                {history.map((history) => (
-                    <HistoryCard type={history.type} key={history.id} />
+                {history.map((historyItem) => (
+                    <HistoryCard type={historyItem.type} key={historyItem.id} />
                 ))}
             </YGroup>
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        paddingTop: 5,
+        marginTop: 15,
+    },
+    title: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#363e4b',
+    },
+});

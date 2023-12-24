@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, Text } from 'react-native';
-import { YGroup, ListItem, YStack, XStack } from 'tamagui';
+import { YGroup, ListItem, Stack } from 'tamagui';
 import truncateEthereumAddress from '../utils/functions';
 import { BudgetItemSheet } from './BudgetItemSheet';
 import { Ionicons } from '@expo/vector-icons';
@@ -10,14 +10,14 @@ export function BudgetItem({ budget, budgetItemSheetRef }) {
         <YGroup.Item style={styles.container}>
             <TouchableOpacity onPress={() => budgetItemSheetRef.current?.show()}>
                 <ListItem style={styles.listItem}>
-                    <YStack style={styles.textContainer}>
+                    <Stack style={styles.textContainer}>
                         <Text style={styles.title}>{budget.name}</Text>
                         <Text style={styles.address}>{truncateEthereumAddress(budget.address)}</Text>
-                    </YStack>
-                    <XStack style={styles.amountContainer}>
+                    </Stack>
+                    <Stack style={styles.amountContainer}>
                         <Text style={styles.amount}>${budget.amount}</Text>
                         <Ionicons name="chevron-forward" size={24} color="#E1E2E4" />
-                    </XStack>
+                    </Stack>
                 </ListItem>
             </TouchableOpacity>
             <BudgetItemSheet budgetItemSheetRef={budgetItemSheetRef} />
