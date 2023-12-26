@@ -2,12 +2,13 @@ import React from 'react';
 import { TouchableOpacity, Text } from 'react-native';
 import { YGroup, ListItem, Stack } from 'tamagui';
 import truncateEthereumAddress from '../utils/functions';
-import { BudgetItemSheet } from './BudgetItemSheet';
 import { Ionicons } from '@expo/vector-icons';
+import { StyleSheet } from 'react-native';
+import BudgetItemSheet from './BudgetItemSheet';
 
 export function BudgetItem({ budget, budgetItemSheetRef }) {
     return (
-        <YGroup.Item style={styles.container}>
+        <YGroup.Item>
             <TouchableOpacity onPress={() => budgetItemSheetRef.current?.show()}>
                 <ListItem style={styles.listItem}>
                     <Stack style={styles.textContainer}>
@@ -25,7 +26,7 @@ export function BudgetItem({ budget, budgetItemSheetRef }) {
     );
 }
 
-const styles = {
+const styles = StyleSheet.create({
     container: {
         backgroundColor: 'white',
     },
@@ -49,7 +50,7 @@ const styles = {
     },
     address: {
         fontSize: 14,
-        fontWeight: 600,
+        fontWeight: "bold",
         color: '#3164FA',
         marginTop: 5,
     },
@@ -63,4 +64,4 @@ const styles = {
         fontWeight: 'bold',
         color: '#111111',
     },
-};
+});

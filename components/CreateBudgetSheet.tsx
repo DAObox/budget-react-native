@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 35,
         borderTopLeftRadius: 35,
         width: "100%",
-        height: screenHeight * 0.8,
+        height: screenHeight * 0.775
     },
     container: {
         flex: 1,
@@ -200,6 +200,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         borderRadius: 8,
+        marginTop: 10,
     },
     createButtonText: {
         fontSize: 20,

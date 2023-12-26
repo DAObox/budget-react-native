@@ -13,7 +13,7 @@ export function AssetItem({ asset }) {
                             style={{ width: 48, height: 48, borderRadius: 24, marginRight: 3 }}
                         />
                         <View style={{ flexDirection: "column", justifyContent: "space-between", marginLeft: 6 }}>
-                            <Text style={{ fontSize: 20, fontWeight: "bold", color: "#565f6d" }}>
+                            <Text style={{ fontSize: 20, fontWeight: "bold", color: "#656D7C" }}>
                                 {asset.name}
                             </Text>
                             <View style={{ flexDirection: "row", alignItems: "center", paddingRight: 3 }}>
@@ -28,7 +28,7 @@ export function AssetItem({ asset }) {
                         </View>
                     </View>
                     <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginLeft: 6 }}>
-                        <Text style={{ fontSize: 18, fontWeight: "bold", color: "#111111" }}>
+                        <Text style={{ fontSize: 18, fontWeight: "bold", color: "#363E4B" }}>
                             ${asset.amount * asset.price}
                         </Text>
                     </View>
