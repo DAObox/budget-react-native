@@ -1,7 +1,10 @@
-import { ScrollView, View, TouchableOpacity, Text } from "react-native";
+import React from "react";
+import { Dimensions } from "react-native";
+import { ScrollView, View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 import { BottomSheet } from "react-native-sheet";
-import { YStack, Label, Input } from "tamagui";
+import { Label, Input } from "tamagui";
+import { Ionicons } from "@expo/vector-icons";
 
 export function CreateBudgetSheet({
     budgetCreateSheetRef,
@@ -28,152 +31,179 @@ export function CreateBudgetSheet({
         <BottomSheet
             height={750}
             ref={budgetCreateSheetRef}
-            sheetStyle={{
-                backgroundColor: "#ffffff",
-                borderTopRightRadius: 35,
-                borderTopLeftRadius: 35,
-                width: "100%",
-                height: "fit-content",
-            }}
+            sheetStyle={styles.sheet}
         >
             <ScrollView key="budget-sheet-scroll">
-                <YStack className="flex-1">
-                    <View className="flex flex-col items-center flex-1 p-6 space-y-6">
-                        <Text className="text-3xl font-semibold text-[#1b1b1b]">
-                            Create Budget
-                        </Text>
-                        <View className="flex flex-col w-full space-y-5">
-                            <View className="space-y-2">
-                                <Label
-                                    className="text-xl font-bold text-[#1b1b1b]"
-                                    htmlFor="name"
-                                >
-                                    Name
-                                </Label>
-                                <Input
-                                    id="name"
-                                    placeholder="Budget name"
-                                    color="#1b1b1b"
-                                    backgroundColor="#ffffff"
-                                    height={52}
-                                    placeholderTextColor="#7E8492"
-                                />
-                            </View>
-                            <View className="flex-1 space-y-2" style={{ zIndex: 2500 }}>
-                                <Label
-                                    className="text-xl font-bold text-[#1b1b1b]"
-                                    htmlFor="token"
-                                >
-                                    Token
-                                </Label>
-                                <DropDownPicker
-                                    open={openToken}
-                                    items={tokenItems}
-                                    setOpen={setOpenToken}
-                                    setValue={setTokenValue}
-                                    setItems={setTokenItems}
-                                    value={tokenValue}
-                                    theme="LIGHT"
-                                    multiple={false}
-                                    onSelectItem={setTokenValue}
-                                    placeholder={tokenValue?.label}
-                                    className="border-[1.5px] border-[#EDEDED] h-[52px]"
-                                    placeholderStyle={{
-                                        color: "#7E8492",
-                                    }}
-                                    dropDownContainerStyle={{
-                                        borderColor: "#EDEDED",
-                                        borderWidth: 1.5,
-                                        backgroundColor: "#ffffff",
-                                    }}
-                                    dropDownDirection="BOTTOM"
-                                />
-                            </View>
-                            <View className="space-y-2">
-                                <Label
-                                    className="text-xl font-bold text-[#1b1b1b]"
-                                    htmlFor="amount"
-                                >
-                                    Amount
-                                </Label>
-                                <Input
-                                    id="amount"
-                                    placeholder="Amount of token"
-                                    color="#1b1b1b"
-                                    backgroundColor="#ffffff"
-                                    height={52}
-                                    keyboardType="numeric"
-                                    placeholderTextColor="#7E8492"
-                                />
-                            </View>
-                            <View className="flex-1 space-y-2" style={{ zIndex: 2000 }}>
-                                <Label
-                                    className="text-xl font-bold text-[#1b1b1b]"
-                                    htmlFor="spender"
-                                >
-                                    Spender
-                                </Label>
-                                <DropDownPicker
-                                    open={spenderOpen}
-                                    items={spenderItems}
-                                    setOpen={setSpenderOpen}
-                                    setValue={setSpenderValue}
-                                    setItems={setSpenderItems}
-                                    value={spenderValue}
-                                    theme="LIGHT"
-                                    multiple={false}
-                                    onSelectItem={setSpenderValue}
-                                    placeholder={spenderValue?.label}
-                                    className="border-[1.5px] border-[#EDEDED] h-[52px]"
-                                    placeholderStyle={{
-                                        color: "#7E8492",
-                                    }}
-                                    dropDownContainerStyle={{
-                                        borderColor: "#EDEDED",
-                                        borderWidth: 1.5,
-                                        backgroundColor: "#ffffff",
-                                    }}
-                                    searchPlaceholder="Select a spender"
-                                    dropDownDirection="BOTTOM"
-                                />
-                            </View>
-                            <View className="flex-1 space-y-2" style={{ zIndex: 1500 }}>
-                                <Label
-                                    className="text-xl font-bold text-[#1b1b1b]"
-                                    htmlFor="reoccurence"
-                                >
-                                    Reoccurence
-                                </Label>
-                                <DropDownPicker
-                                    open={reoccurrenceOpen}
-                                    items={reoccurrenceItems}
-                                    setOpen={setReoccurrenceOpen}
-                                    setValue={setReoccurrenceValue}
-                                    setItems={setReoccurrenceItems}
-                                    value={reoccurrenceValue}
-                                    theme="LIGHT"
-                                    multiple={false}
-                                    onSelectItem={setReoccurrenceValue}
-                                    placeholder={reoccurrenceValue?.label}
-                                    className="border-[1.5px] border-[#EDEDED] h-[52px]"
-                                    placeholderStyle={{
-                                        color: "#7E8492",
-                                    }}
-                                    dropDownContainerStyle={{
-                                        borderColor: "#EDEDED",
-                                        borderWidth: 1.5,
-                                        backgroundColor: "#ffffff",
-                                    }}
-                                    dropDownDirection="BOTTOM"
-                                />
-                            </View>
-                            <TouchableOpacity className="w-full h-[52px] bg-[#3164FA] flex flex-col items-center justify-center rounded-xl">
-                                <Text className="text-xl font-semibold text-white">Create</Text>
-                            </TouchableOpacity>
+                <View style={styles.container}>
+                    <Text style={styles.title}>Create Budget</Text>
+                    <View style={styles.formContainer}>
+                        <View style={styles.inputContainer}>
+                            <Label style={styles.label} htmlFor="name">
+                                Name
+                            </Label>
+                            <Input
+                                id="name"
+                                placeholder="Budget name"
+                                style={styles.input}
+                                placeholderTextColor="#7E8492"
+                            />
                         </View>
+                        <View style={[styles.inputContainer, { zIndex: 2500 }]}>
+                            <Label style={styles.label} htmlFor="token">
+                                Token
+                            </Label>
+                            <DropDownPicker
+                                open={openToken}
+                                items={tokenItems}
+                                setOpen={setOpenToken}
+                                setValue={setTokenValue}
+                                setItems={setTokenItems}
+                                value={tokenValue}
+                                theme="LIGHT"
+                                multiple={false}
+                                onSelectItem={setTokenValue}
+                                placeholder={tokenValue?.label}
+                                style={styles.pickerContainer}
+                                placeholderStyle={{ color: "#7E8492" }}
+                                dropDownContainerStyle={styles.pickerDropDownContainer}
+                                dropDownDirection="BOTTOM"
+                            />
+                        </View>
+                        <View style={styles.inputContainer}>
+                            <Label style={styles.label} htmlFor="amount">
+                                Amount
+                            </Label>
+                            <Input
+                                id="amount"
+                                placeholder="Amount of token"
+                                style={styles.input}
+                                keyboardType="numeric"
+                                placeholderTextColor="#7E8492"
+                            />
+                        </View>
+                        <View style={[styles.inputContainer, { zIndex: 2000 }]}>
+                            <Label style={styles.label} htmlFor="spender">
+                                Spender
+                            </Label>
+                            <DropDownPicker
+                                open={spenderOpen}
+                                items={spenderItems}
+                                setOpen={setSpenderOpen}
+                                setValue={setSpenderValue}
+                                setItems={setSpenderItems}
+                                value={spenderValue}
+                                theme="LIGHT"
+                                multiple={false}
+                                onSelectItem={setSpenderValue}
+                                placeholder={spenderValue?.label}
+                                style={styles.pickerContainer}
+                                placeholderStyle={{ color: "#7E8492" }}
+                                dropDownContainerStyle={styles.pickerDropDownContainer}
+                                searchPlaceholder="Select a spender"
+                                dropDownDirection="BOTTOM"
+                            />
+                        </View>
+                        <View style={[styles.inputContainer, { zIndex: 1500 }]}>
+                            <Label style={styles.label} htmlFor="reoccurrence">
+                                Reoccurrence
+                            </Label>
+                            <DropDownPicker
+                                open={reoccurrenceOpen}
+                                items={reoccurrenceItems}
+                                setOpen={setReoccurrenceOpen}
+                                setValue={setReoccurrenceValue}
+                                setItems={setReoccurrenceItems}
+                                value={reoccurrenceValue}
+                                theme="LIGHT"
+                                multiple={false}
+                                onSelectItem={setReoccurrenceValue}
+                                placeholder={reoccurrenceValue?.label}
+                                style={styles.pickerContainer}
+                                placeholderStyle={{ color: "#7E8492" }}
+                                dropDownContainerStyle={styles.pickerDropDownContainer}
+                                dropDownDirection="BOTTOM"
+                            />
+                        </View>
+                        <TouchableOpacity style={styles.createButton}>
+                            <Text style={styles.createButtonText}>Create</Text>
+                        </TouchableOpacity>
                     </View>
-                </YStack>
+                </View>
             </ScrollView>
         </BottomSheet>
     );
 }
+
+const screenHeight = Dimensions.get('window').height;
+
+const styles = StyleSheet.create({
+    sheet: {
+        backgroundColor: "#ffffff",
+        borderTopRightRadius: 35,
+        borderTopLeftRadius: 35,
+        width: "100%",
+        height: screenHeight * 0.8,
+    },
+    container: {
+        flex: 1,
+        flexDirection: "column",
+        alignItems: "center",
+        padding: 16,
+        spacing: 6,
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: "bold",
+        color: "#1b1b1b",
+        marginBottom: 12,
+    },
+    formContainer: {
+        flex: 1,
+        flexDirection: "column",
+        width: "100%",
+    },
+    inputContainer: {
+        flexDirection: "column",
+        marginBottom: 12,
+    },
+    label: {
+        fontSize: 20,
+        fontWeight: "bold",
+        color: "#1b1b1b",
+    },
+    input: {
+        height: 52,
+        backgroundColor: "#ffffff",
+        color: "#1b1b1b",
+        borderWidth: 1.5,
+        borderColor: "#EDEDED",
+        borderRadius: 8,
+        padding: 10,
+    },
+    pickerContainer: {
+        height: 52,
+        borderWidth: 1.5,
+        borderColor: "#EDEDED",
+        borderRadius: 8,
+        backgroundColor: "#ffffff",
+    },
+    pickerDropDownContainer: {
+        borderColor: "#EDEDED",
+        borderWidth: 1.5,
+        backgroundColor: "#ffffff",
+    },
+    createButton: {
+        width: "100%",
+        height: 52,
+        backgroundColor: "#3164FA",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: 8,
+    },
+    createButtonText: {
+        fontSize: 20,
+        fontWeight: "bold",
+        color: "#ffffff",
+    },
+});
